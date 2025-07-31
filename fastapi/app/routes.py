@@ -10,19 +10,20 @@ router = APIRouter()
 async def read_recommended_books():
     return [book.__dict__ for book in books]
 
+@router.get("/books/by_rating", status_code=status.HTTP_200_OK)
+async def read_book_by_rating(book_rating: int = Query(gt=0, lt=6)):
+    return [book.__dict__ for book in books if book.rating == book_rating]
+
+
 @router.get("/books/{book_id}", status_code=status.HTTP_200_OK)
-async def read_book(book_id: int = Path(gt=0)):
+async def read_book(book_id: int = Path(gt=0)):          #path parameter
     for book in books:
         if book.id == book_id:
             return book.__dict__
     raise HTTPException(status_code=404, detail="Item not found")
 
-@router.get("/books/", status_code=status.HTTP_200_OK)
-async def read_book_by_rating(book_rating: int = Query(gt=0, lt=6)):
-    return [book.__dict__ for book in books if book.rating == book_rating]
-
 @router.get("/books/by_publish_date", status_code=status.HTTP_200_OK)
-async def read_book_by_published_date(published_date: int = Query(gt=1999, lt=2031)):
+async def read_book_by_published_date(published_date: int = Query(gt=1999, lt=2031)):      #query parameter
     return [book.__dict__ for book in books if book.published_date == published_date]
 
 @router.post("/create-books", status_code=status.HTTP_201_CREATED)
@@ -42,8 +43,12 @@ async def update_book(book: BookRequest):
 
 @router.delete("/books/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_book(book_id: int = Path(gt=0)):
+ try:
     for i, book in enumerate(books):
         if book.id == book_id:
             deleted_book = books.pop(i)
             return {"message": "Book Deleted", "book": deleted_book.__dict__}
     raise HTTPException(status_code=404, detail="Book not found")
+ except Exception as e:
+    raise HTTPException(status_code=500, detail=f"Error deleting book:str(e)")
+ 
