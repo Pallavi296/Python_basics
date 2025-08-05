@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/basic_crud_operation.iml" filepath="$PROJECT_DIR$/.idea/basic_crud_operation.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/fastapi_todo_app.iml" filepath="$PROJECT_DIR$/.idea/fastapi_todo_app.iml" />
+>>>>>>> fb7e8a88b17ef3d1db56294695fdd2b648369f50
     </modules>
   </component>
 </project>

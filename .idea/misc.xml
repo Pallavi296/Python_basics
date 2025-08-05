@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< HEAD
     <option name="sdkName" value="Python 3.10 (basic_crud_operation)" />
+=======
+    <option name="sdkName" value="Python 3.10 (fastapi_todo_app)" />
+>>>>>>> fb7e8a88b17ef3d1db56294695fdd2b648369f50
   </component>
 </project>
