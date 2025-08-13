@@ -1,0 +1,13 @@
+# .env file
+
+# Database Credentials
+# These variables are used by the FastAPI application to connect to the PostgreSQL container.
+DB_USER=postgres
+DB_PASSWORD=12345
+DB_NAME=postgres
+DB_HOST=db  # This is the service name defined in your docker-compose.yml
+DB_PORT=5432
+
+# Other settings for your FastAPI app
+SECRET_KEY=your_super_secret_key_for_jwt
+ALGORITHM=HS256
